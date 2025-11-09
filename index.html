@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Летний Старт - найди идеальную летнюю стажировку в 50+ российских компаниях. Для школьников 8-11 классов.">
-    <title>Летний Старт - Стажировки для школьников</title>
+    <meta name="description" content="intern - найди идеальную стажировку в топовых российских компаниях. Для школьников 8-11 классов.">
+    <title>intern - Платформа стажировок для школьников</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="light">
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 4L4 9.5V14.5C4 21.5 8.5 28 16 30C23.5 28 28 21.5 28 14.5V9.5L16 4Z" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 16L12 13V20L16 23L20 20V13L16 16Z" fill="#60A5FA"/>
+                        <rect x="4" y="4" width="24" height="24" stroke="currentColor" stroke-width="2.5"/>
+                        <rect x="10" y="10" width="5" height="12" fill="currentColor"/>
+                        <rect x="17" y="14" width="5" height="8" fill="currentColor"/>
                     </svg>
-                    <span>Летний Старт</span>
+                    <span>intern</span>
                 </div>
                 <nav class="nav">
-                    <a href="#how-it-works">Как это работает</a>
                     <a href="#internships">Стажировки</a>
+                    <a href="#companies">Компании</a>
+                    <a href="#quiz">Подбор</a>
                     <a href="#faq">FAQ</a>
-                    <a href="#register" class="btn btn-primary btn-small">Войти</a>
+                    <button class="theme-toggle" aria-label="Переключить тему" title="Переключить тему">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-primary btn-small" data-modal="login">Войти</button>
                 </nav>
                 <button class="mobile-menu-toggle" aria-label="Меню">
                     <span></span>
@@ -39,115 +57,117 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Стань профессионалом до старта вуза!</h1>
-                    <p class="hero-subtitle">50+ компаний, 2-4 недели, твой выбор — найди идеальную летнюю стажировку</p>
-                    <a href="#internships" class="btn btn-primary btn-large">Выбрать стажировку →</a>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">компаний</div>
+                    <div class="badge">50+ компаний · 200+ стажировок</div>
+                    <h1 class="hero-title">Найди стажировку<br>своей мечты</h1>
+                    <p class="hero-subtitle">Попробуй профессию на практике. 2-4 недели в топовых компаниях России. Для школьников 8-11 классов.</p>
+                    
+                    <!-- Live Search -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                            <input type="text" id="heroSearch" placeholder="Поиск: UX-дизайн, программирование, маркетинг..." autocomplete="off">
+                            <div class="search-results" id="searchResults"></div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2-4</div>
-                            <div class="stat-label">недели</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">бесплатно</div>
-                        </div>
+                        <button class="btn btn-primary" data-modal="filter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                            </svg>
+                            Фильтры
+                        </button>
+                    </div>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" data-modal="apply">Подать заявку</button>
+                        <button class="btn btn-secondary btn-large" onclick="document.getElementById('quiz').scrollIntoView({behavior: 'smooth'})">
+                            Пройти тест
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="hero-illustration">
-                    <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Designer -->
-                        <g class="illustration-item">
-                            <circle cx="120" cy="100" r="35" stroke="#2563EB" stroke-width="2"/>
-                            <path d="M120 135V180M120 180L95 220M120 180L145 220M95 145L120 135L145 145" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                            <rect x="100" y="70" width="40" height="15" stroke="#60A5FA" stroke-width="2"/>
-                        </g>
-                        
-                        <!-- Engineer -->
-                        <g class="illustration-item">
-                            <circle cx="250" cy="120" r="35" stroke="#2563EB" stroke-width="2"/>
-                            <path d="M250 155V200M250 200L225 240M250 200L275 240M225 165L250 155L275 165" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M235 105L250 90L265 105" stroke="#60A5FA" stroke-width="2" fill="none"/>
-                            <rect x="245" y="185" width="20" height="10" stroke="#60A5FA" stroke-width="2"/>
-                        </g>
-                        
-                        <!-- Biologist -->
-                        <g class="illustration-item">
-                            <circle cx="380" cy="100" r="35" stroke="#2563EB" stroke-width="2"/>
-                            <path d="M380 135V180M380 180L355 220M380 180L405 220M355 145L380 135L405 145" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="375" cy="95" r="8" stroke="#60A5FA" stroke-width="2"/>
-                            <path d="M365 175L375 185L385 175" stroke="#60A5FA" stroke-width="2" fill="none"/>
-                        </g>
-                        
-                        <!-- Marketer -->
-                        <g class="illustration-item">
-                            <circle cx="180" cy="280" r="35" stroke="#2563EB" stroke-width="2"/>
-                            <path d="M180 315V350M180 350L155 390M180 350L205 390M155 325L180 315L205 325" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M165 265L175 275L185 265L195 275" stroke="#60A5FA" stroke-width="2" fill="none"/>
-                        </g>
-                        
-                        <!-- Developer -->
-                        <g class="illustration-item">
-                            <circle cx="320" cy="290" r="35" stroke="#2563EB" stroke-width="2"/>
-                            <path d="M320 325V370M320 370L295 400M320 370L345 400M295 335L320 325L345 335" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
-                            <text x="310" y="298" font-family="monospace" font-size="20" fill="#60A5FA">&lt;/&gt;</text>
-                        </g>
-                        
-                        <!-- Connection lines -->
-                        <path d="M145 120L220 130M270 140L350 110M210 250L290 270" stroke="#DBEAFE" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
-                    </svg>
+                
+                <div class="hero-stats-panel">
+                    <div class="stat-box">
+                        <div class="stat-value" data-count="50">0</div>
+                        <div class="stat-label">Компаний</div>
+                        <div class="stat-change positive">+12 за месяц</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" data-count="200">0</div>
+                        <div class="stat-label">Стажировок</div>
+                        <div class="stat-change positive">+45 новых</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" data-count="1500">0</div>
+                        <div class="stat-label">Участников</div>
+                        <div class="stat-change positive">+230 в этом месяце</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Бесплатно</div>
+                        <div class="stat-change neutral">Для всех</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="how-it-works">
+    <!-- Quick Stats Banner -->
+    <section class="stats-banner">
         <div class="container">
-            <h2 class="section-title">Как это работает</h2>
-            <div class="steps">
-                <div class="step-card">
-                    <div class="step-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="M21 21l-4.35-4.35"/>
-                        </svg>
-                    </div>
-                    <div class="step-number">Шаг 1</div>
-                    <h3 class="step-title">Выбирай</h3>
-                    <p class="step-description">Отрасли: IT, медицина, маркетинг, инженерия и многое другое</p>
+            <div class="stats-ticker">
+                <div class="ticker-item">
+                    <span class="ticker-icon">🚀</span>
+                    <span>Новая стажировка в Яндексе</span>
                 </div>
-
-                <div class="step-arrow">→</div>
-
-                <div class="step-card">
-                    <div class="step-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </div>
-                    <div class="step-number">Шаг 2</div>
-                    <h3 class="step-title">Отправляй заявку</h3>
-                    <p class="step-description">Онлайн за 5 минут — просто и быстро</p>
+                <div class="ticker-item">
+                    <span class="ticker-icon">⭐</span>
+                    <span>5 мест в VK</span>
                 </div>
-
-                <div class="step-arrow">→</div>
-
-                <div class="step-card">
-                    <div class="step-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5z"/>
-                            <path d="M9 12l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <div class="step-number">Шаг 3</div>
-                    <h3 class="step-title">Погружайся в профессию</h3>
-                    <p class="step-description">Стажируйся летом и получай реальный опыт!</p>
+                <div class="ticker-item">
+                    <span class="ticker-icon">🔥</span>
+                    <span>Популярно: UX-дизайн</span>
                 </div>
+                <div class="ticker-item">
+                    <span class="ticker-icon">💼</span>
+                    <span>30 заявок сегодня</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <section class="tabs-section">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-button active" data-tab="all">
+                    Все направления
+                    <span class="tab-count">200</span>
+                </button>
+                <button class="tab-button" data-tab="it">
+                    IT & Tech
+                    <span class="tab-count">85</span>
+                </button>
+                <button class="tab-button" data-tab="design">
+                    Дизайн
+                    <span class="tab-count">45</span>
+                </button>
+                <button class="tab-button" data-tab="marketing">
+                    Маркетинг
+                    <span class="tab-count">32</span>
+                </button>
+                <button class="tab-button" data-tab="engineering">
+                    Инженерия
+                    <span class="tab-count">28</span>
+                </button>
+                <button class="tab-button" data-tab="other">
+                    Другое
+                    <span class="tab-count">10</span>
+                </button>
             </div>
         </div>
     </section>
@@ -155,166 +175,132 @@
     <!-- Internships Catalog -->
     <section id="internships" class="internships">
         <div class="container">
-            <h2 class="section-title">Популярные направления</h2>
-            <div class="internships-grid">
-                <div class="internship-card">
-                    <div class="company-logo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="14" y="14" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                        </svg>
-                    </div>
-                    <h3 class="internship-title">UX-дизайн в VK</h3>
-                    <p class="internship-description">Создай интерфейс мессенджера и научись думать как дизайнер</p>
-                    <div class="internship-tags">
-                        <span class="tag">📍 Москва/онлайн</span>
-                        <span class="tag">👤 14-17 лет</span>
-                        <span class="tag">⏰ 3 недели</span>
-                    </div>
-                    <button class="btn btn-outline">Подробнее</button>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Каталог стажировок</h2>
+                    <p class="section-subtitle">Выбери из 200+ актуальных предложений</p>
                 </div>
-
-                <div class="internship-card">
-                    <div class="company-logo" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5z"/>
-                            <circle cx="12" cy="11" r="3"/>
-                        </svg>
+                <div class="controls">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" title="Сетка">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                        </button>
+                        <button class="view-btn" data-view="list" title="Список">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="8" y1="6" x2="21" y2="6"/>
+                                <line x1="8" y1="12" x2="21" y2="12"/>
+                                <line x1="8" y1="18" x2="21" y2="18"/>
+                                <line x1="3" y1="6" x2="3.01" y2="6"/>
+                                <line x1="3" y1="12" x2="3.01" y2="12"/>
+                                <line x1="3" y1="18" x2="3.01" y2="18"/>
+                            </svg>
+                        </button>
                     </div>
-                    <h3 class="internship-title">Биоинженерия в Росатоме</h3>
-                    <p class="internship-description">Работай в лаборатории и открой мир физики и инноваций</p>
-                    <div class="internship-tags">
-                        <span class="tag">📍 Москва</span>
-                        <span class="tag">👤 15-17 лет</span>
-                        <span class="tag">⏰ 4 недели</span>
-                    </div>
-                    <button class="btn btn-outline">Подробнее</button>
-                </div>
-
-                <div class="internship-card">
-                    <div class="company-logo" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
-                    </div>
-                    <h3 class="internship-title">Маркетинг в Яндексе</h3>
-                    <p class="internship-description">Запусти рекламную кампанию и узнай секреты digital-маркетинга</p>
-                    <div class="internship-tags">
-                        <span class="tag">📍 Онлайн</span>
-                        <span class="tag">👤 14-17 лет</span>
-                        <span class="tag">⏰ 2 недели</span>
-                    </div>
-                    <button class="btn btn-outline">Подробнее</button>
-                </div>
-
-                <div class="internship-card">
-                    <div class="company-logo" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"/>
-                            <polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                    </div>
-                    <h3 class="internship-title">Разработка в Сбере</h3>
-                    <p class="internship-description">Создай мобильное приложение и стань частью IT-команды</p>
-                    <div class="internship-tags">
-                        <span class="tag">📍 Москва/онлайн</span>
-                        <span class="tag">👤 15-17 лет</span>
-                        <span class="tag">⏰ 3 недели</span>
-                    </div>
-                    <button class="btn btn-outline">Подробнее</button>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="newest">Сначала новые</option>
+                        <option value="popular">Популярные</option>
+                        <option value="deadline">По дедлайну</option>
+                        <option value="duration">По длительности</option>
+                    </select>
                 </div>
             </div>
-            <div class="internships-cta">
-                <a href="#catalog" class="btn btn-secondary btn-large">Смотреть все 50+ вариантов</a>
+
+            <div class="internships-grid" id="internshipsGrid">
+                <!-- Карточки будут добавлены через JavaScript -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="loadMore">
+                    Загрузить еще
+                    <span class="load-count">(показано <span id="currentCount">12</span> из <span id="totalCount">200</span>)</span>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="benefits">
+    <!-- Companies Showcase -->
+    <section id="companies" class="companies">
         <div class="container">
-            <h2 class="section-title">Почему это круто</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Реальный опыт вместо теории</h3>
-                    <p class="benefit-description">Работай над настоящими проектами в крутых компаниях</p>
+            <h2 class="section-title">Компании-партнеры</h2>
+            <p class="section-subtitle">Стажируйся в лучших компаниях России</p>
+            
+            <div class="companies-filter">
+                <button class="filter-btn active" data-industry="all">Все</button>
+                <button class="filter-btn" data-industry="tech">Tech</button>
+                <button class="filter-btn" data-industry="finance">Финансы</button>
+                <button class="filter-btn" data-industry="retail">Retail</button>
+                <button class="filter-btn" data-industry="energy">Энергетика</button>
+            </div>
+
+            <div class="companies-grid" id="companiesGrid">
+                <!-- Компании добавятся через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quiz -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2 class="section-title">Не знаешь, что выбрать?</h2>
+                    <p class="section-subtitle">Пройди тест и найди идеальную стажировку за 2 минуты</p>
                 </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="9" y1="15" x2="15" y2="15"/>
-                        </svg>
+                <div class="quiz-content" id="quizContent">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quizProgress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>Вопрос <span id="currentQuestion">1</span> из <span id="totalQuestions">5</span></span>
+                        </div>
                     </div>
-                    <h3 class="benefit-title">Сертификат для портфолио</h3>
-                    <p class="benefit-description">Получи документ, который поможет при поступлении</p>
+
+                    <div class="quiz-question" id="quizQuestion">
+                        <!-- Вопросы добавятся через JS -->
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn btn-outline" id="quizPrev" disabled>Назад</button>
+                        <button class="btn btn-primary" id="quizNext">Далее</button>
+                    </div>
                 </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Знакомство с компанией мечты</h3>
-                    <p class="benefit-description">Найди место, куда захочешь вернуться после учебы</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Бесплатно для школьников</h3>
-                    <p class="benefit-description">Все стажировки абсолютно бесплатны и доступны каждому</p>
+                <div class="quiz-results hidden" id="quizResults">
+                    <!-- Результаты теста -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Success Story -->
-    <section class="success-story">
+    <!-- Success Stories -->
+    <section class="stories">
         <div class="container">
-            <div class="story-content">
-                <div class="story-image">
-                    <div class="story-avatar">
-                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-                            <circle cx="60" cy="60" r="60" fill="url(#avatarGradient)"/>
-                            <circle cx="60" cy="45" r="20" fill="white" opacity="0.9"/>
-                            <path d="M30 95c0-16.5 13.5-30 30-30s30 13.5 30 30" fill="white" opacity="0.9"/>
-                            <defs>
-                                <linearGradient id="avatarGradient" x1="0" y1="0" x2="120" y2="120">
-                                    <stop offset="0%" stop-color="#2563EB"/>
-                                    <stop offset="100%" stop-color="#60A5FA"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-                <div class="story-text">
-                    <div class="quote-icon">"</div>
-                    <blockquote class="story-quote">
-                        В лаборатории «Росатома» я понял: хочу стать физиком! Работал с реальным оборудованием, встречался с учеными. Это было незабываемо!
-                    </blockquote>
-                    <div class="story-author">
-                        <strong>Иван</strong>, 10 класс, Москва
-                    </div>
-                </div>
+            <h2 class="section-title">Истории успеха</h2>
+            <p class="section-subtitle">Реальные отзывы участников программы</p>
+            
+            <div class="stories-carousel" id="storiesCarousel">
+                <!-- Карусель историй -->
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevStory">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+                <div class="carousel-dots" id="carouselDots"></div>
+                <button class="carousel-btn" id="nextStory">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -323,79 +309,40 @@
     <section id="faq" class="faq">
         <div class="container">
             <h2 class="section-title">Частые вопросы</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Как подать заявку на стажировку?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Выбери интересную стажировку из каталога, нажми кнопку "Подробнее" и заполни короткую форму. Укажи свои интересы, класс и почему хочешь попасть именно в эту компанию. Заявка рассматривается 3-5 дней.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Платят ли стипендию за стажировку?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Стажировки бесплатные и не оплачиваются — это образовательная программа для знакомства с профессией. Зато ты получишь ценный опыт, сертификат и новые знакомства!</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Можно участвовать из регионов?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Да! Многие стажировки проходят онлайн. Для офлайн-программ в Москве, Санкт-Петербурге и других городах нужно будет приехать на место (проживание обсуждается индивидуально).</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Нужны ли какие-то особые навыки?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Нет! Стажировки созданы для знакомства с профессией. Главное — интерес и желание учиться. Компании сами обучат тебя всему необходимому.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Сколько времени занимает стажировка?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>От 2 до 4 недель, в зависимости от программы. Обычно это 3-4 часа в день, чтобы у тебя оставалось время на отдых. Точное расписание указано в описании каждой стажировки.</p>
-                    </div>
-                </div>
+            <div class="faq-search">
+                <input type="text" id="faqSearch" placeholder="Поиск по вопросам...">
+            </div>
+            <div class="faq-list" id="faqList">
+                <!-- FAQ items будут добавлены через JS -->
             </div>
         </div>
     </section>
 
-    <!-- Pre-Footer CTA -->
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">Лето, которое изменит твое будущее</h2>
-                <p class="cta-subtitle">Начни свой путь к профессии мечты прямо сейчас</p>
+                <h2 class="cta-title">Готов начать?</h2>
+                <p class="cta-subtitle">Найди стажировку мечты уже сегодня</p>
                 <div class="cta-buttons">
-                    <a href="#register" class="btn btn-primary btn-large">Зарегистрироваться</a>
-                    <a href="#internships" class="btn btn-outline-white btn-large">Каталог стажировок</a>
+                    <button class="btn btn-primary btn-large" data-modal="apply">Подать заявку</button>
+                    <button class="btn btn-outline btn-large" onclick="document.getElementById('internships').scrollIntoView({behavior: 'smooth'})">
+                        Смотреть все стажировки
+                    </button>
+                </div>
+                <div class="cta-stats">
+                    <div class="cta-stat">
+                        <strong>98%</strong>
+                        <span>довольных участников</span>
+                    </div>
+                    <div class="cta-stat">
+                        <strong>4.9/5</strong>
+                        <span>средний рейтинг</span>
+                    </div>
+                    <div class="cta-stat">
+                        <strong>24/7</strong>
+                        <span>поддержка</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -408,12 +355,13 @@
                 <div class="footer-column">
                     <div class="footer-logo">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 4L4 9.5V14.5C4 21.5 8.5 28 16 30C23.5 28 28 21.5 28 14.5V9.5L16 4Z" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M16 16L12 13V20L16 23L20 20V13L16 16Z" fill="#60A5FA"/>
+                            <rect x="4" y="4" width="24" height="24" stroke="currentColor" stroke-width="2.5"/>
+                            <rect x="10" y="10" width="5" height="12" fill="currentColor"/>
+                            <rect x="17" y="14" width="5" height="8" fill="currentColor"/>
                         </svg>
-                        <span>Летний Старт</span>
+                        <span>intern</span>
                     </div>
-                    <p class="footer-description">Платформа для поиска летних стажировок школьниками 8-11 классов</p>
+                    <p class="footer-description">Платформа для поиска стажировок школьниками 8-11 классов</p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Telegram">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -425,16 +373,21 @@
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.38 12.38c.37.37.77.73 1.09 1.15.14.19.28.38.37.59.13.3.01.63-.26.65l-1.7-.01c-.44.04-.79-.14-1.09-.44-.24-.24-.46-.49-.69-.74-.09-.1-.19-.19-.31-.26-.22-.12-.42-.09-.56.07-.15.17-.18.38-.2.59-.03.29-.09.37-.38.38-.64.02-1.25-.07-1.82-.38-.49-.27-.87-.65-1.21-1.09-.66-.86-1.17-1.81-1.63-2.8-.12-.26-.04-.39.24-.4.46-.01.92-.01 1.38 0 .19 0 .31.11.38.28.23.55.52 1.07.88 1.55.09.12.18.24.3.33.14.11.25.08.32-.08.05-.11.07-.23.08-.35.03-.38.03-.76-.01-1.14-.02-.19-.11-.32-.3-.36-.1-.02-.08-.06-.03-.12.08-.11.15-.17.3-.17h1.61c.13.03.16.09.18.22l.01 1.29c0 .1.05.39.23.46.14.05.23-.07.31-.15.37-.39.64-.85.88-1.33.11-.2.19-.42.28-.63.06-.15.16-.22.33-.22h1.78c.05 0 .11 0 .16.02.18.03.23.13.18.31-.08.3-.27.54-.43.79-.17.26-.35.51-.52.77-.15.24-.14.36.04.56z"/>
                             </svg>
                         </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
                 <div class="footer-column">
-                    <h4 class="footer-title">Навигация</h4>
+                    <h4 class="footer-title">Платформа</h4>
                     <ul class="footer-links">
-                        <li><a href="#about">О проекте</a></li>
-                        <li><a href="#internships">Каталог стажировок</a></li>
-                        <li><a href="#how-it-works">Как это работает</a></li>
-                        <li><a href="#faq">Частые вопросы</a></li>
+                        <li><a href="#internships">Стажировки</a></li>
+                        <li><a href="#companies">Компании</a></li>
+                        <li><a href="#quiz">Подбор стажировки</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -442,32 +395,61 @@
                     <h4 class="footer-title">Компаниям</h4>
                     <ul class="footer-links">
                         <li><a href="#partners">Стать партнером</a></li>
-                        <li><a href="#partners-info">Информация для HR</a></li>
-                        <li><a href="#success">Истории успеха</a></li>
+                        <li><a href="#for-hr">Для HR</a></li>
+                        <li><a href="#analytics">Аналитика</a></li>
+                        <li><a href="#api">API</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h4 class="footer-title">Контакты</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@summer-start.ru">info@summer-start.ru</a></li>
+                        <li><a href="mailto:hello@intern.ru">hello@intern.ru</a></li>
                         <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
                         <li>Москва, Россия</li>
                     </ul>
+                    <button class="btn btn-outline btn-small" data-modal="feedback" style="margin-top: 16px;">
+                        Обратная связь
+                    </button>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Летний Старт. Все права защищены</p>
+                <p>&copy; 2025 intern. Все права защищены</p>
                 <div class="footer-legal">
-                    <a href="#privacy">Политика конфиденциальности</a>
-                    <a href="#terms">Пользовательское соглашение</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                    <a href="#terms">Условия использования</a>
+                    <a href="#cookies">Cookies</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Modal Container -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Content will be injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
     <script src="script.js"></script>
 </body>
 </html>
-
