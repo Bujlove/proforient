@@ -630,6 +630,25 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-text);
 }
 
+.internship-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-item svg {
+    flex-shrink: 0;
+}
+
 .internship-footer {
     display: flex;
     justify-content: space-between;
@@ -641,6 +660,9 @@ h1, h2, h3, h4, h5, h6 {
 .internship-deadline {
     font-size: 14px;
     color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .load-more-container {
